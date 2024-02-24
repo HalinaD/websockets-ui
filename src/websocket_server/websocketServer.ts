@@ -1,5 +1,6 @@
 import WebSocket from 'ws';
 import { handleRegistration } from '../handlers/handleRegistration';
+import { handleCreateRoom, handleAddUserToRoom } from '../handlers/handleRoom';
 
 const PORT = 3000;
 const wss = new WebSocket.Server({ port: PORT });
@@ -15,6 +16,12 @@ wss.on('connection', function connection(ws) {
       switch (data.type) {
         case 'reg':
           handleRegistration(ws, data);
+          break;
+        case 'create_room':
+          handleCreateRoom(ws, wss, data.data);
+          break;
+        case 'add_user_to_room':
+          handleAddUserToRoom(ws, wss, data.data);
           break;
         default:
           console.log('Unknown command');
