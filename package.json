@@ -7,8 +7,10 @@
     "scripts": {
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "eslint \"src/**/*.ts\" --fix",
-        "start": "node ./index.ts",
-        "start:dev": "start cmd /k nodemon ./src/websocket_server/websocketServer.ts && start cmd /k nodemon ./index.ts",
+        "start": "ts-node-dev ./index.ts",
+        "start:dev": "nodemon ./index.ts",
+        "start:ws": "nodemon ./src/websocket_server/websocketServer.ts",
+        "start:both": "start cmd /k nodemon ./src/websocket_server/websocketServer.ts && start cmd /k nodemon ./index.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Andrei Auchynnikau",
