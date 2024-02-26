@@ -1,6 +1,8 @@
 export interface Player {
   name: string;
   password: string;
+  idGame?: number;
+  index?: number;
 }
 
 export interface Room {
